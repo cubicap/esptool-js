@@ -1,2 +1,2 @@
-export { IEspLoaderTerminal, ESPLoader, FlashOptions, LoaderOptions } from "./esploader";
-export { Transport } from "./webserial";
+export { IEspLoaderTerminal, ESPLoader, FlashOptions, LoaderOptions } from "./esploader.js";
+export { Transport } from "./webserial.js";

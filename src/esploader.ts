@@ -1,8 +1,8 @@
-import { ESPError } from "./error";
+import { ESPError } from "./error.js";
 import { Data, deflate, Inflate } from "pako";
-import { Transport } from "./webserial";
-import { ROM } from "./targets/rom";
-import { customReset, usbJTAGSerialReset } from "./reset";
+import { Transport } from "./webserial.js";
+import { ROM } from "./targets/rom.js";
+import { customReset, usbJTAGSerialReset } from "./reset.js";
 
 export interface FlashOptions {
   fileArray: { data: string; address: number }[];

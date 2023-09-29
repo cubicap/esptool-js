@@ -1,4 +1,4 @@
-import { ESPLoader } from "../esploader";
+import { ESPLoader } from "../esploader.js";
 
 export abstract class ROM {
   // abstract read_efuse(loader: ESPLoader, offset: number): Promise<number>; //esp32
