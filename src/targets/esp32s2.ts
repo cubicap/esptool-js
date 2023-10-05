@@ -1,6 +1,6 @@
 import { ESPLoader } from "../esploader.js";
 import { ROM } from "./rom.js";
-import ESP32S2_STUB from "./stub_flasher/stub_flasher_32s2.json";
+import ESP32S2_STUB from "./stub_flasher/stub_flasher_32s2.js";
 
 export class ESP32S2ROM extends ROM {
   public CHIP_NAME = "ESP32-S2";

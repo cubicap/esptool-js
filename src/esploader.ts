@@ -29,32 +29,32 @@ type FlashReadCallback = ((packet: Uint8Array, progress: number, totalSize: numb
 async function magic2Chip(magic: number): Promise<ROM | null> {
   switch (magic) {
     case 0x00f01d83: {
-      const { ESP32ROM } = await import("./targets/esp32");
+      const { ESP32ROM } = await import("./targets/esp32.js");
       return new ESP32ROM();
     }
     case 0x6921506f:
     case 0x1b31506f: {
-      const { ESP32C3ROM } = await import("./targets/esp32c3");
+      const { ESP32C3ROM } = await import("./targets/esp32c3.js");
       return new ESP32C3ROM();
     }
     case 0x2ce0806f: {
-      const { ESP32C6ROM } = await import("./targets/esp32c6");
+      const { ESP32C6ROM } = await import("./targets/esp32c6.js");
       return new ESP32C6ROM();
     }
     case 0xd7b73e80: {
-      const { ESP32H2ROM } = await import("./targets/esp32h2");
+      const { ESP32H2ROM } = await import("./targets/esp32h2.js");
       return new ESP32H2ROM();
     }
     case 0x09: {
-      const { ESP32S3ROM } = await import("./targets/esp32s3");
+      const { ESP32S3ROM } = await import("./targets/esp32s3.js");
       return new ESP32S3ROM();
     }
     case 0x000007c6: {
-      const { ESP32S2ROM } = await import("./targets/esp32s2");
+      const { ESP32S2ROM } = await import("./targets/esp32s2.js");
       return new ESP32S2ROM();
     }
     case 0xfff0c101: {
-      const { ESP8266ROM } = await import("./targets/esp8266");
+      const { ESP8266ROM } = await import("./targets/esp8266.js");
       return new ESP8266ROM();
     }
     default:

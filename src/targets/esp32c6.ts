@@ -1,6 +1,6 @@
 import { ESPLoader } from "../esploader.js";
 import { ROM } from "./rom.js";
-import ESP32C6_STUB from "./stub_flasher/stub_flasher_32c6.json";
+import ESP32C6_STUB from "./stub_flasher/stub_flasher_32c6.js";
 
 export class ESP32C6ROM extends ROM {
   public CHIP_NAME = "ESP32-C6";

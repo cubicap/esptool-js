@@ -1,6 +1,6 @@
 import { ESPLoader } from "../esploader.js";
 import { ROM } from "./rom.js";
-import ESP32C3_STUB from "./stub_flasher/stub_flasher_32c3.json";
+import ESP32C3_STUB from "./stub_flasher/stub_flasher_32c3.js";
 
 export class ESP32C3ROM extends ROM {
   public CHIP_NAME = "ESP32-C3";
