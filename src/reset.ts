@@ -49,10 +49,11 @@ type CmdsArgsTypes = {
   D: boolean;
   R: boolean;
   W: number;
+  S: void;
 };
 
 export function validateCustomResetStringSequence(seqStr: string): boolean {
-  const commands: (keyof CmdsArgsTypes)[] = ["D", "R", "W"];
+  const commands: (keyof CmdsArgsTypes)[] = ["D", "R", "W", "S"];
 
   const commandsList = seqStr.split("|");
 
@@ -87,19 +88,22 @@ export function validateCustomResetStringSequence(seqStr: string): boolean {
  *
  * The commands are:
  *
- * D: setDTR - 1=True / 0=False
+ * D: setDTR (localy only) - 1=True / 0=False
  *
- * R: setRTS - 1=True / 0=False
+ * R: setRTS (localy only) - 1=True / 0=False
+ *
+ * S: writeRTSDTR - write DTR and RTS to the device
  *
  * W: Wait (time delay) - positive integer number (miliseconds)
  *
- * "D0|R1|W100|D1|R0|W50|D0" represents the classic reset strategy
+ * "D0|R1|S|W100|D1|R0|S|W50|D0|S" represents the classic reset strategy
  */
 export async function customReset(transport: Transport, sequenceString: string) {
   const resetDictionary: { [K in keyof CmdsArgsTypes]: (arg: CmdsArgsTypes[K]) => Promise<void> } = {
     D: async (arg: boolean) => await transport.setDTR(arg),
     R: async (arg: boolean) => await transport.setRTS(arg),
     W: async (delay: number) => await sleep(delay),
+    S: async () => await transport.writeRTSDTR(),
   };
   try {
     const isValidSequence = validateCustomResetStringSequence(sequenceString);
@@ -114,6 +118,8 @@ export async function customReset(transport: Transport, sequenceString: string) 
         await resetDictionary["W"](Number(cmdVal));
       } else if (cmdKey === "D" || cmdKey === "R") {
         await resetDictionary[cmdKey as "D" | "R"](cmdVal === "1");
+      } else if (cmdKey === "S") {
+        await resetDictionary["S"]();
       }
     }
   } catch (error) {
