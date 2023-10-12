@@ -106,8 +106,10 @@ resetButton.onclick = async () => {
   }
 
   await transport.setDTR(false);
+  await transport.writeRTSDTR();
   await new Promise((resolve) => setTimeout(resolve, 100));
   await transport.setDTR(true);
+  await transport.writeRTSDTR();
 };
 
 eraseButton.onclick = async () => {

@@ -9,39 +9,47 @@ function sleep(ms: number): Promise<void> {
 export async function classicReset(transport: Transport, resetDelay = DEFAULT_RESET_DELAY) {
   await transport.setDTR(false);
   await transport.setRTS(true);
+  await transport.writeRTSDTR();
   await sleep(100);
   await transport.setDTR(true);
   await transport.setRTS(false);
+  await transport.writeRTSDTR();
   await sleep(resetDelay);
   await transport.setDTR(false);
+  await transport.writeRTSDTR();
 }
 
 export async function usbJTAGSerialReset(transport: Transport) {
   await transport.setRTS(false);
   await transport.setDTR(false);
+  await transport.writeRTSDTR();
   await sleep(100);
 
   await transport.setDTR(true);
   await transport.setRTS(false);
+  await transport.writeRTSDTR();
   await sleep(100);
 
   await transport.setRTS(true);
   await transport.setDTR(false);
-  await transport.setRTS(true);
+  await transport.writeRTSDTR();
 
   await sleep(100);
   await transport.setRTS(false);
   await transport.setDTR(false);
+  await transport.writeRTSDTR();
 }
 
 export async function hardReset(transport: Transport, usingUsbOtg = false) {
   if (usingUsbOtg) {
     await sleep(200);
     await transport.setRTS(false);
+    await transport.writeRTSDTR();
     await sleep(200);
   } else {
     await sleep(100);
     await transport.setRTS(false);
+    await transport.writeRTSDTR();
   }
 }
 

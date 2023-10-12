@@ -1100,7 +1100,9 @@ export class ESPLoader {
 
   async hard_reset() {
     await this.transport.setRTS(true); // EN->LOW
+    await this.transport.writeRTSDTR();
     await this._sleep(100);
+    await this.transport.writeRTSDTR();
     await this.transport.setRTS(false);
   }
 
