@@ -1,5 +1,5 @@
 {
-  "name": "esptool-js",
+  "name": "@cubicap/esptool-js",
   "version": "0.3.0",
   "module": "lib/index.js",
   "main": "lib/index.js",
@@ -22,10 +22,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/espressif/esptool-js.git"
+    "url": "git+https://github.com/cubicap/esptool-js.git"
   },
   "bugs": {
-    "url": "https://github.com/espressif/esptool-js/issues"
+    "url": "https://github.com/cubicap/esptool-js/issues"
   },
   "dependencies": {
     "pako": "^2.1.0",
