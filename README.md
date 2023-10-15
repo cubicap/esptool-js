@@ -1,3 +1,7 @@
+# esptool-js-node
+
+A fork of esptool-js attempting to make the tool work as a library in the node.js environment.
+
 # Javascript implementation of esptool
 
 This repository contains a Javascript implementation of [esptool](https://github.com/espressif/esptool), a serial flasher utility for Espressif chips. `esptool-js` is based on [Web Serial API](https://wicg.github.io/serial/) and works in Google Chrome and Microsoft Edge [version 89 or later](https://developer.mozilla.org/en-US/docs/Web/API/Serial#browser_compatibility) browsers.
